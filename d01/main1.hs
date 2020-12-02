@@ -6,19 +6,9 @@ import Data.List
 parser :: String -> [Int]
 parser input = map read (lines input)
 
-first_halve :: [a] -> [a]
-first_halve xs = (case xs of
-    [] -> []
-    xs -> take ((length xs) `div` 2) xs)
-
-second_halve :: [a] -> [a]
-second_halve xs = (case xs of
-    [] -> []
-    xs -> drop ((length xs) `div` 2) xs)
-
-
 find_solution :: [Int] -> Maybe Int
-find_solution items = find (\x -> 2020 - x `elem` second_halve items) (first_halve items)
+find_solution [] = Nothing
+find_solution (x:xs) = (if (2020 - x) `elem` xs then Just x else find_solution xs)
 
 
 solve :: [Int] -> Int
