@@ -1,3 +1,4 @@
+-- Advent of Code 2020 [day 2.0]
 data Validable = Validable { lower :: Int
     , upper :: Int
     , entry :: Char

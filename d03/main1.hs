@@ -1,3 +1,4 @@
+-- Advent of Code 2020 [day 3.0]
 
 isOccurrence :: (Int, String) -> Bool
 isOccurrence (position, line) = line !! (position `mod` (length line) ) == '#'

@@ -1,3 +1,4 @@
+-- Advent of Code 2020 [day 1.0]
 -- liens (String -> [String]) turns input into seq. of lines
 -- words String -> [String]
 -- read Individual strings to floats

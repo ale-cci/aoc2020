@@ -1,3 +1,4 @@
+-- Advent of Code 2020 [day 3.2]
 
 isOccurrence :: (Int, String) -> Bool
 isOccurrence (position, line) = line !! (position `mod` (length line) ) == '#'
@@ -10,10 +11,10 @@ solve :: (Int, Int) -> [String] -> Int
 solve (slopeX, slopeY) inputLines = length $ filter isOccurrence $ zip (map (*slopeX) [0..]) $ dropLines slopeY inputLines
 
 slopes = [(1, 1)
-    ,(3, 1)
-    ,(5, 1)
-    ,(7, 1)
-    ,(1, 2)]
+         ,(3, 1)
+         ,(5, 1)
+         ,(7, 1)
+         ,(1, 2)]
 
 
 solveAll :: [String] -> Int

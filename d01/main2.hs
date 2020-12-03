@@ -1,3 +1,4 @@
+-- Advent of Code 2020 [day 1.1]
 import Data.List
 
 
