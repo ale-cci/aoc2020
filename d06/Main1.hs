@@ -2,7 +2,7 @@ import Data.List
 
 -- Break input into voting groups
 groups :: [String] -> [[String]]
-groups = fmap (filter (/= "")) . groupBy (\a -> \b -> b /= "")
+groups = fmap (filter (/= "")) . groupBy (\a b -> b /= "")
 
 -- Vote of voting group
 votes :: [String] -> [Char]
