@@ -1,15 +1,9 @@
--- L: empty
--- #: occupied
--- .: floor
-
-
-
 getAt :: [[Char]] -> Int -> Int -> Char
 getAt grid x y
   | 0 <= x && x < width && 0 <= y && y < height = grid !! y !! x
   | otherwise = '.'
   where height = length grid
-        width  = length (grid !! 0)
+        width  = length (head grid)
 
 
 directions = [(-1, -1)
@@ -33,7 +27,7 @@ nextState' grid x y
 
 
 nextState :: [[Char]] -> [[Char]]
-nextState grid = zipWith (\y -> \row -> zipWith (\x -> \_ -> nextState' grid x y) [0..] row) [0..] grid
+nextState grid = zipWith (\y row -> zipWith (\x _ -> nextState' grid x y) [0..] row) [0..] grid
 
 
 iterate' :: [[Char]] -> [[Char]] -> [[Char]]
