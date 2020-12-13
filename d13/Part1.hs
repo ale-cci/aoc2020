@@ -1,20 +1,20 @@
 module Main where
 
 import Data.Ord (comparing)
-import Data.List (sortBy)
+import Data.List (minimumBy)
 
 
 solve :: Int -> [Int] -> Int
 solve arriveTime busses = b * t
     where times = map (\b -> (b, b - arriveTime `mod` b)) busses
-          (b, t) = head $ sortBy (comparing snd) times
+          (b, t) = minimumBy (comparing snd) times
 
 
 splitOn :: (Char -> Bool) -> String -> [String]
 splitOn _ [] = []
 splitOn f (x:xs) =
     if f x
-       then "":(splitOn f xs)
+       then "": splitOn f xs
        else case splitOn f xs of
               (t:ts) -> (x:t):ts
               [] -> [[x]]
@@ -23,7 +23,7 @@ splitOn f (x:xs) =
 
 parseInput :: [String] -> (Int, [Int])
 parseInput input = (arriveTime, busses)
-    where readInt = (read :: String -> Int)
+    where readInt = read :: String -> Int
           arriveTime = readInt $ head input
           busses = map readInt $ filter (/= "x") $ splitOn (==',') (input !! 1)
 

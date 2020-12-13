@@ -2,6 +2,7 @@ module Main where
 
 import Data.List (find)
 import Data.Maybe (fromJust)
+import Data.Bifunctor (second)
 
 
 solveN :: (Int, Int) -> (Int, Int) -> (Int, Int)
@@ -18,7 +19,7 @@ splitOn :: (Char -> Bool) -> String -> [String]
 splitOn _ [] = []
 splitOn f (x:xs) =
     if f x
-       then "":(splitOn f xs)
+       then "":splitOn f xs
        else case splitOn f xs of
               (t:ts) -> (x:t):ts
               [] -> [[x]]
@@ -26,7 +27,7 @@ splitOn f (x:xs) =
 
 prepareInput :: [String] -> [(Int, Int)]
 prepareInput =
-    map (\(t, b) -> (t, (read :: String -> Int) b))
+    map (second (read :: String -> Int))
     . filter (\(t, b) -> b /= "x")
     . zip [0..]
     . splitOn (==',')
